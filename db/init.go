@@ -39,6 +39,12 @@ var (
 
 // Connects to PostgreSQL database and performs schema upgrades
 func LoadDB() error {
+	envConn := os.Getenv("DATABASE_URL")
+	if envConn != "" {
+		ConnArgs = envConn
+	} else {
+		ConnArgs = DefaultConnArgs
+	}
 	return loadDB("")
 }
 
@@ -99,7 +105,7 @@ func LoadTestDB(suffix string) (close func() error, err error) {
 
 	ConnArgs = os.Getenv("DATABASE_URL")
 	fmt.Printf("DATABASE_URL: %s\n", ConnArgs)
-	
+
 	if ConnArgs == "" {
 		ConnArgs = fmt.Sprintf(
 			"postgres://meguca:meguca@localhost:5432/%s?sslmode=disable&binary_parameters=yes",

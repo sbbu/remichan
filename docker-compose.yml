@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: meguca
+      POSTGRES_USER: meguca
+      POSTGRES_DB: meguca
+    ports:
+      - "5432:5432"
+    # Added healthcheck so Docker marks the DB as "healthy" only after accepting connections
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meguca -h localhost || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        platform: "linux/x86_64"
+    command: "/meguca/meguca -a 0.0.0.0:8000"
+    environment:
+      - DATABASE_URL=postgres://meguca:meguca@db:5432/meguca?sslmode=disable&binary_parameters=yes
+
+    # Updated depends_on so 'app' won't start until 'db' is healthy
+    depends_on:
+      db:
+        condition: service_healthy
