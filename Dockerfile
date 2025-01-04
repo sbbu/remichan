@@ -2,7 +2,7 @@ FROM golang:1.22.4-bullseye
 
 WORKDIR /meguca
 
-# Install Node.js and system dependencies
+# Install dependencies
 RUN apt-get update && apt-get install -y \
   pkg-config \
   libgeoip-dev \
@@ -12,9 +12,6 @@ RUN apt-get update && apt-get install -y \
   libavformat-dev \
   libswscale-dev \
   build-essential \
-  postgresql \
-  postgresql-contrib \
-  cron \
   cmake \
   python3-dev \
   python3-numpy \
@@ -43,4 +40,4 @@ COPY . .
 RUN make all
 
 EXPOSE 8000
-ENTRYPOINT ["/meguca/scripts/with_postgres.sh"]
+CMD ["/meguca/meguca", "-a", "0.0.0.0:8000"]
