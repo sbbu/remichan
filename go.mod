@@ -26,7 +26,7 @@ require (
 	github.com/sevlyar/go-daemon v0.1.4
 	github.com/ulikunitz/xz v0.5.6
 	github.com/valyala/quicktemplate v1.7.0
-	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+	golang.org/x/crypto v0.24.0
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
 
@@ -49,19 +49,12 @@ require (
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	gitlab.com/nyarla/go-crypt v0.0.0-20160106005555-d9a5dc2b789b // indirect
-	golang.org/x/net v0.0.0-20210510120150-4163338589ed // indirect
-	golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 // indirect
-	golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 // indirect
-	golang.org/x/text v0.3.6 // indirect
+	golang.org/x/net v0.26.0 // indirect
+	golang.org/x/sys v0.21.0 // indirect
+	golang.org/x/term v0.21.0 // indirect
+	golang.org/x/text v0.16.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 )
 
 replace github.com/bakape/thumbnailer/v2 => github.com/HeyPuter/thumbnailer/v2 v2.0.0-20230828231719-c526241bacef
-
-// replace github.com/bakape/boorufetch => github.com/gummyfrog/remiboorufetch v1.0.2
-replace github.com/bakape/boorufetch => /mnt/meguca/miladychan/booru/remiboorufetch
-
-replace github.com/bakape/captchouli => /mnt/meguca/miladychan/booru/captchouli
-
-// github.com/bakape/captchouli v1.1.5
