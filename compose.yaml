@@ -12,7 +12,7 @@ services:
       dockerfile: Dockerfile
       args:
         platform: "linux/x86_64"
-    command: tail -f /dev/null
     entrypoint: "/meguca/scripts/with_postgres.sh"
+    command: "/meguca/meguca -a 0.0.0.0:8000"  # Pass address directly to binary
     volumes:
-      - .:/meguca
+      - ./images:/meguca/images

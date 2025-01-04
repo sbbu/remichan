@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
   libavformat-dev \
   libswscale-dev \
   build-essential \
-  postgresql-client \
+  postgresql \
+  postgresql-contrib \
+  cron \
   cmake \
   python3-dev \
   python3-numpy \
@@ -25,6 +27,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y \
   libopencv-dev \
   && mkdir -p /usr/lib/$(uname -m)-linux-gnu/pkgconfig \
+  && mkdir -p /meguca/www/videos \
   && ln -s $(find /usr/lib -name "opencv4.pc") /usr/lib/$(uname -m)-linux-gnu/pkgconfig/opencv.pc
 
 # Set pkg-config path dynamically
