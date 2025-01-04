@@ -97,9 +97,12 @@ func LoadTestDB(suffix string) (close func() error, err error) {
 		return
 	}
 
-	ConnArgs = fmt.Sprintf(
-		"postgres://meguca:meguca@localhost:5432/%s?sslmode=disable&binary_parameters=yes",
-		name)
+	ConnArgs = os.Getenv("DATABASE_URL")
+	if ConnArgs == "" {
+		ConnArgs = fmt.Sprintf(
+			"postgres://meguca:meguca@localhost:5432/%s?sslmode=disable&binary_parameters=yes",
+			name)
+	}
 	err = loadDB(suffix)
 	return
 }
